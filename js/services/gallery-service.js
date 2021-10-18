@@ -1,6 +1,6 @@
 'use strict';
 
-
+const SECOND = 1000;
 
 
 const gProjs = [
@@ -23,6 +23,15 @@ const gProjs = [
         labels: ["Imgs rendering", "keyboard events"]
     }
 ]
+
+
+function getDate(ts) {
+    var fixedTs = ts * SECOND;
+    var d = new Date(fixedTs);
+    var dateStr = (`${d.getDate()}.${(d.getMonth() + 1)}.${d.getFullYear()}`);
+    return dateStr;
+}
+
 
 
 
