@@ -24,7 +24,7 @@ function renderPortfolios() {
     <div class="row">`;
 
     strHtmls += gProjs.map(proj => {
-        return `<div class="col-md-4 col-sm-6 portfolio-item">
+        return `<div class="col-xs-4 col-sm-4 col-lg-3 portfolio-item m-auto">
         <a class="portfolio-link" data-toggle="modal" href="#portfolioModal${modalCount++}">
         <div class="portfolio-hover">
         <div class="portfolio-hover-content">
@@ -51,13 +51,14 @@ function renderModals() {
 
     const strHtmls = gProjs.map(proj => {
         return `<div class="portfolio-modal modal fade" id="portfolioModal${modalCount++}" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog"><div class="modal-content"><div class="close-modal" data-dismiss="modal">
+        <div class="modal-dialog"><div class="modal-content bg-light"><div class="close-modal" data-dismiss="modal">
         <div class="lr"><div class="rl"></div></div></div><div class="container"><div class="row">
         <div class="col-lg-8 mx-auto"><div class="modal-body">
         <h2>${proj.name}</h2>
         <p class="item-intro text-muted">${proj.desc}</p>
         <img class="img-fluid d-block mx-auto" src="img/portfolio/modal/${proj.id}.png" alt="">
-        <ul class="list-inline"><li>Date: ${getDate(proj.publishedAt)}</li>
+        <ul class="list-inline"><li><a href="${proj.url}" target="_blank">CHECK IT OUT</a></li>
+        <li>Date: ${getDate(proj.publishedAt)}</li>
         <li>Client: Misterbit</li>
         <li>Category: ${proj.labels}</li></ul>
         <button class="btn btn-primary" data-dismiss="modal" type="button">
@@ -67,4 +68,18 @@ function renderModals() {
 
     $modals.html(strHtmls);
 }
+
+
+function onSubmit() {
+    const $email = $('#email-input').val();
+    const $subject = $('#subject-input').val();
+    const $message = $('#message-body-input').val();
+
+    window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=benernst3@gmail.com&su=${$subject}&body=${$message}. From: ${$email}`);
+
+    $('#email-input').val('');
+    $('#subject-input').val('');
+    $('#message-body-input').val('');
+}
+
 
