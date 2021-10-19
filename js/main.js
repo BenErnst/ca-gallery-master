@@ -15,6 +15,7 @@ function renderPortfolios() {
     var modalCount = 0;
     const $portfoliosContainer = $('#portfolio .container');
 
+    // moving back to HTML:
     var strHtmls = `<div class="row">
     <div class="col-lg-12 text-center">
     <h2 class="section-heading">Portfolio</h2>
@@ -40,7 +41,7 @@ function renderPortfolios() {
         </div>`;
     })
 
-    // strHtmls = strHtmls.join('')
+    // strHtmls = strHtmls.join('') //no need
     $portfoliosContainer.html(strHtmls);
 }
 
@@ -77,6 +78,7 @@ function onSubmit() {
 
     window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=benernst3@gmail.com&su=${$subject}&body=${$message}. From: ${$email}`);
 
+    // Could be in another function:
     $('#email-input').val('');
     $('#subject-input').val('');
     $('#message-body-input').val('');
